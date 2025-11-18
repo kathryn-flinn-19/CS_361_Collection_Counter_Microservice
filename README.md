@@ -126,4 +126,4 @@ print("Number of items matching criteria:", response_data.get("count"))
 
 # UML sequence diagram
 
-<img width="777" height="777" alt="image" src="UML.png" />
+<img width="1113" height="548" alt="image" src="UML.png" />
