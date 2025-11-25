@@ -75,7 +75,7 @@ def count_by_tag(collection, target_tag):
     return count
 
 
-def call(collection, sort_by, target_value):
+def find_count_method(collection, sort_by, target_value):
     """
     Function that decides which helper to call depending on incoming JSON request.
 
@@ -99,7 +99,7 @@ def call(collection, sort_by, target_value):
         return count_all(collection)
 
 
-def server():
+def await_counting_request():
     context = zmq.Context()
     socket = context.socket(zmq.REP)
 
@@ -137,7 +137,7 @@ def server():
         }
         """
 
-        count = call(collection, sort_by, target_value)
+        count = find_count_method(collection, sort_by, target_value)
         response = {"count": count}
         socket.send_string(json.dumps(response))
 
