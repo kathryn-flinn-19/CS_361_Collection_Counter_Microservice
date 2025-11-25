@@ -126,20 +126,6 @@ def server():
 
         target_value = json_data.get("target_value", None)
 
-        # example json structure:
-        """
-        data = { 
-                "collection": 
-                    [
-                        {"type": "txt", "date": "date", "other info": "txt", . . . }, 
-                        {"type": "txt", "date": "date", "other info": "txt", . . . },
-                        {"type": "txt", "date": "date", "other info": "txt", . . . }
-                    ],
-                "sort_by": "field",
-                "target_value": "val" 
-        }
-        """
-
         count = call(collection, sort_by, target_value)
         response = {"count": count}
         socket.send_string(json.dumps(response))
