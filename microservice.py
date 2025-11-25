@@ -107,7 +107,6 @@ def server():
     socket.bind("tcp://*:5014")
 
     while True:
-        # receive and decode a request from the client
         message = socket.recv()
 
         full_msg = message.decode()
@@ -116,10 +115,8 @@ def server():
         if full_msg == "Q":
             break
 
-        # interpret the string as a json obj
         json_data = json.loads(full_msg)
 
-        # grab the list of collection items
         collection = json_data.get("collection", [])
 
         sort_by = json_data.get("sort_by", "all")
